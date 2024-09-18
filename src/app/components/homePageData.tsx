@@ -2,6 +2,8 @@ import axios from "axios"
 import Link from "next/link"
 import { useFetch } from "../hooks/useFetch"
 
+
+export const revalidate = 10
 export default async function HomePage() {
 
     const Data = await useFetch()
