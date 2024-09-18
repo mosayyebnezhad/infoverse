@@ -41,7 +41,7 @@ const Article = async ({ params }: { params: { article: number } }) => {
             <span>-------</span><br />
             {/* {summary} */}
             <GetImage pageID={params.article} />
-            {/* <span dangerouslySetInnerHTML={{ __html: summary }} /> */}
+            <span dangerouslySetInnerHTML={{ __html: summary }} />
 
 
 
