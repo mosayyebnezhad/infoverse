@@ -10,7 +10,9 @@ export default async function HomePage() {
             format: "json",
             origin: "*",
             rnnamespace: 0
-            // explaintext: true
+        },
+        headers: {
+            'Cache-Control': 'no-store'
         }
     })
     return (
