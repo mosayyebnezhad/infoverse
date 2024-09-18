@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Vazirmatn, Poppins } from "next/font/google"
 import "./globals.css";
-
+import { ThemeProvider } from "@/components/theme-provider"
 const vazir = Vazirmatn({
   subsets: ["latin"]
 })
@@ -17,9 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" >
-      <body className={vazir.className} >
-        {children}
+    <html lang="en" dir="rtl" suppressHydrationWarning >
+      <body className={vazir.className + " bg-gray-100 dark:bg-gray-950 text-black dark:text-white"} >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem >
+         
+            {children}
+       
+        </ThemeProvider>
       </body>
     </html>
   );
