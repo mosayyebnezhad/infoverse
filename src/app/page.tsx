@@ -11,16 +11,16 @@ import SearchBox from "./components/search";
 
 
 export default function Home() {
-  
+
 
   return (
     <div className="">
-      <ChangeTheme />
-      <Card>
-        <SearchBox />
-        <HomePage />
 
-      </Card>
+
+      <SearchBox />
+      <HomePage />
+
+
     </div>
   );
 }

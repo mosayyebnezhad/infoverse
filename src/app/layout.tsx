@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Vazirmatn, Poppins } from "next/font/google"
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
+import { ChangeTheme } from "./components/changeColor";
+import { Navbar } from "./components/navbar";
 const vazir = Vazirmatn({
   subsets: ["latin"]
 })
@@ -20,9 +22,9 @@ export default function RootLayout({
     <html lang="en" dir="rtl" suppressHydrationWarning >
       <body className={vazir.className + " bg-gray-100 dark:bg-gray-950 text-black dark:text-white"} >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem >
-         
-            {children}
-       
+          <Navbar />
+          {children}
+
         </ThemeProvider>
       </body>
     </html>

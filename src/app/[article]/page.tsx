@@ -36,17 +36,22 @@ const Article = async ({ params }: { params: { article: number } }) => {
     // const render = wikioutpoter(Uotp)
 
     return (
-        <div >
-            <h1>{title}</h1>
-            <span>-------</span><br />
-            {/* {summary} */}
-            <GetImage pageID={params.article} />
-            <span dangerouslySetInnerHTML={{ __html: summary }} />
+        <div
 
+            className="container mx-auto mb-48"
+        >
 
+            <div className="w-10/12 mx-auto" >
+                <h1 className="bg-[--bgbg] opacity-65 rounded-lg h-auto py-5 my-8 flex justify-center items-center font-extrabold text-3xl">{title}</h1>
 
+                <div className="flex justify-center items-center mb-7">
+                <GetImage alt={title} pageID={params.article} />
+                </div>
+                <span 
+                className="leading-10 "
+                dangerouslySetInnerHTML={{ __html: summary }} />
 
-            {/* {`${JSON.stringify(render)}`} */}
+            </div>
         </div>
     )
 }

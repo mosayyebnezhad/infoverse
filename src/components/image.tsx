@@ -7,7 +7,9 @@ import { Skeleton } from "./ui/skeleton";
 
 
 interface Iprop {
-    pageID: number
+    pageID: number,
+    size?: number,
+    alt: string,
 }
 interface IImage {
     height: number,
@@ -18,10 +20,11 @@ interface IImage {
 
 
 const GetImage = (prop: Iprop) => {
-    const { pageID } = prop
+    const { pageID, alt, size } = prop
 
     const [ftImage, setFtImage] = useState<IImage>()
     const [Error, SetError] = useState<string>("")
+    const [fullloaded, setload] = useState<boolean>(false)
 
     useEffect(() => {
         const Run = async () => {
@@ -36,7 +39,7 @@ const GetImage = (prop: Iprop) => {
                     exintro: "",
                     pageids: pageID,
                     origin: "*",
-                    pithumbsize: 480
+                    pithumbsize: size || 480
 
                 }
             })
@@ -46,8 +49,14 @@ const GetImage = (prop: Iprop) => {
                 .catch(s => {
                     SetError(s)
                 })
+                .finally(() => {
+                    setload(true)
+                })
+
         }
         Run()
+
+
 
 
         // const IMgsrc = await Img.data.query?.pages[params.article].thumbnail.source;
@@ -58,16 +67,30 @@ const GetImage = (prop: Iprop) => {
 
 
     }, [])
+
+
+
+
+
+    useEffect(() => {
+        console.log(ftImage)
+    }, [fullloaded])
+
     return (
 
         <>
 
-            {ftImage ?
+            {fullloaded ?
 
-                <Image src={ftImage.source} alt={"alt"} width={ftImage.width} height={ftImage.height} />
+                <>
+                    {ftImage
+                        &&
+                        <Image className="rounded-lg" src={ftImage.source} alt={alt} width={ftImage.width} height={ftImage.height} />
+                    }
+                </>
                 :
 
-                <Skeleton className="w-[480px] h-60" />
+                <Skeleton className="w-[480px] h-60 z-0" />
 
             }
         </>

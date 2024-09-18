@@ -5,14 +5,21 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+ 
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    
   }
 }
+
+
+
+
+
 
 body {
   color: var(--foreground);
@@ -53,8 +60,13 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --bgbg: #788ca8;
+    --title: #8fa7c8;
   }
+
   .dark {
+    --title: #37354a;
+    --bgbg: #222034;
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
@@ -86,6 +98,7 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
